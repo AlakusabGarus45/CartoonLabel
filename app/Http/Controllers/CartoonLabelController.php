@@ -33,6 +33,26 @@ class CartoonLabelController extends Controller
         $company->save();
         return redirect()->back()->with('success', "Company Added");
     }
+
+        public function editCompany($id){
+        $company = Company::where('id',$id)->first();
+        return view('company.edit',compact('company'));
+    }
+
+    public function updateCompany(Request $request){
+        $company = Company::where('id',$request->company_id)->first();
+        $company->update([
+            'name' => $request->name,
+            'address' => $request->address,
+        ]);
+
+        return redirect()->back()->with('success','Company Edited Successfully.');
+    }
+
+    public function deleteCompany($id){
+        Company::destroy($id);
+        return redirect()->back()->with('success','Deleted Successfully');
+    }
     public function viewRetail(){
         $retails = Retail::all();
         return view('retail.show',compact('retails'));
@@ -54,6 +74,28 @@ class CartoonLabelController extends Controller
         $retail->save();
 
         return redirect()->back()->with('success', 'Retail Added');
+    }
+
+    public function editRetail($id){
+        $retail = Retail::where('id',$id)->first();
+        // dd($retail);
+        return view('retail.edit',compact('retail'));
+    }
+
+    public function updateRetail(Request $request){
+        $retail = Retail::where('id',$request->retail_id)->first();
+        $retail->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'contact' => $request->contact,
+        ]);
+
+        return redirect()->back()->with('success','Retail Edited Successfully.');
+    }
+
+    public function deleteRetail($id){
+        Retail::destroy($id);
+        return redirect()->back()->with('success','Deleted Successfully');
     }
     public function printLabel(){
         $companies = Company::all();

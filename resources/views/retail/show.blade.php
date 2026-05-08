@@ -10,7 +10,11 @@
         <div class="card-header bg-white">
             <h5 class="mb-0">Retail List</h5>
         </div>
-
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="card-body">
 
             <div class="table-responsive">
@@ -36,8 +40,15 @@
                                 <td>{{ $retail->address }}</td>
                                 <td>{{ $retail->contact }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('retail.edit', $retail->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <form action="{{ route('retail.delete', $retail->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
