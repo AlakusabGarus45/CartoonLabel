@@ -7,8 +7,12 @@
 <div class="container-fluid">
 
     <div class="card shadow-sm border-0">
-        <div class="card-header bg-white">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Company List</h5>
+                
+            <a href="{{ route('company.add') }}" class="btn btn-primary btn-sm">
+                Add Company
+            </a>
         </div>
 
                 @if(session('success'))

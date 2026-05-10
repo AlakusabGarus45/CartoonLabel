@@ -7,8 +7,12 @@
 <div class="container-fluid">
 
     <div class="card shadow-sm border-0">
-        <div class="card-header bg-white">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Retail List</h5>
+                
+            <a href="{{ route('retail.add') }}" class="btn btn-primary btn-sm">
+                Add Retail
+            </a>
         </div>
         @if(session('success'))
             <div class="alert alert-success">
