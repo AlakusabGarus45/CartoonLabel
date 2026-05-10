@@ -24,19 +24,16 @@
                     <form action="{{ route('company.store')}}" method="POST">
                         @csrf
 
-                        <!-- Retail Name -->
                         <div class="mb-3">
                             <label class="form-label">Company Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter company name" required>
                         </div>
 
-                        <!-- Address -->
                         <div class="mb-3">
                             <label class="form-label">Address</label>
                             <textarea name="address" class="form-control" rows="3" placeholder="Enter address" required></textarea>
                         </div>
 
-                        <!-- Submit -->
                         <button type="submit" class="btn btn-success w-100">
                             Save Retail
                         </button>
