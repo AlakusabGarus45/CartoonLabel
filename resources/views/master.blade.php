@@ -69,7 +69,7 @@
     @include('partials.sidebar')
 
     <div class="topbar">
-        <h5 class="mb-0">Dashboard</h5>
+        <h5 class="mb-0">{{ auth()->user()->name }}</h5>
     </div>
 
     <div class="main-content">
